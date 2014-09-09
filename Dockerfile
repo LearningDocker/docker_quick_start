@@ -28,12 +28,8 @@ RUN ["/bin/bash", "-l", "-c", "bundle install"]
 # Add the Rails application directory structure to /app on the container's filesystem
 ADD . /app
 
-# Add `/usr/bin/start-server` to the container's filesystem
-COPY config/container/start-server.sh /usr/bin/start-server
-RUN chmod +x /usr/bin/start-server
-
 # Open port 3000 on the container
 EXPOSE 3000
 
 # Overridable startup commands
-CMD ["/usr/bin/start-server"]
+CMD ["/app/bin/start-server"]
